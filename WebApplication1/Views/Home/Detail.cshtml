@@ -1,0 +1,50 @@
+﻿@model WebApplication1.Models.Contact
+@{
+    ViewData["Title"] = "Detail contact";
+}
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 class="test-white">
+                    <strong>
+                        Detalle contacto
+                    </strong>
+                </h3>
+            </div>
+            <div class="card-body">
+                
+                <ul class="list-group" >
+                    <li class="list-group-item" >
+                        <strong>Nombre: </strong>
+                        @Html.DisplayFor(m => m.Name)
+                    </li>
+
+                    <li class="list-group-item">
+                        <strong>Telefono: </strong>
+                        @Html.DisplayFor(m => m.Phone)
+                    </li>
+
+                    <li class="list-group-item">
+                        <strong>Email: </strong>
+                        @Html.DisplayFor(m => m.Email)
+                    </li>
+
+                    <li class="list-group-item">
+                        <strong>Direccion: </strong>
+                        @Html.DisplayFor(m => m.Address)
+                    </li>
+
+                    <li class="list-group-item">
+                        <strong>Fecha de creacion: </strong>
+                        @Html.DisplayFor(m => m.CreationDate)
+                    </li>
+                </ul>
+
+                <a asp-action="Index" asp-controller="Home">Volver</a>
+
+            </div>
+        </div>
+    </div>
+</div>

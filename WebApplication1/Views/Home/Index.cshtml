@@ -1,8 +1,77 @@
-﻿@{
+﻿@model IEnumerable<WebApplication1.Models.Contact>
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<h1 class="text-center">Contacto con .net 8</h1>
+
+<div class="row">
+    <div class="offset-9 col-3 mb-3">
+        <a asp-action="Create" asp-controller="Home" class="btn btn-secondary d-block mx-auto btn-lg">
+            <i class="fa-solid fa-plus"></i> Nuevo Usuario
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 class="test-white">
+                    <strong>
+                        Lista Usuarios
+                    </strong>
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    @if(Model.Count() > 0)
+                    {
+                        <table class="table table-bordered" id="tblContatcs" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(m => m.Name)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Phone)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Email)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Address)</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var contact in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(m => contact.Name)</td>
+                                        <td>@Html.DisplayFor(m => contact.Phone)</td>
+                                        <td>@Html.DisplayFor(m => contact.Email)</td>
+                                        <td>@Html.DisplayFor(m => contact.Address)</td>
+                                        <td>
+                                            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@contact.Id">
+                                                <i class="fa-solid fa-pen-to-square"></i> Edit
+                                            </a>
+                                            <a class="btn btn-secondary" asp-action="Detail" asp-route-id="@contact.Id">
+                                                <i class="fa-solid fa-info"></i> Detail
+                                            </a>
+                                            <a class="btn btn-danger" asp-action="Erase" asp-route-id="@contact.Id">
+                                                <i class="fa-solid fa-eraser"></i> Erase
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p>No hay registros</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
